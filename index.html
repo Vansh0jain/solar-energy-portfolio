@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT-IV Solar Energy Design Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font and smooth scrolling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f7f9fb;
+        }
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e7ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        /* Correction for scroll to anchors below fixed header */
+        .content-section {
+            padding-top: 6rem; 
+            margin-top: -6rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div id="top" class="flex flex-col lg:flex-row min-h-screen">
+        
+        <!-- Sidebar Navigation (Fixed on large screens, toggled on small screens) -->
+        <nav id="sidebar" class="fixed lg:sticky top-0 left-0 h-16 lg:h-screen w-full lg:w-64 bg-indigo-700 text-white shadow-xl z-20 flex flex-col transition-all duration-300">
+            
+            <!-- Logo/Title and Mobile Menu Button -->
+            <div class="flex items-center justify-between p-4 lg:p-6 bg-indigo-800 shadow-lg">
+                <!-- Logo now links to the top of the page -->
+                <a href="#" class="text-xl font-bold tracking-tight text-white hover:text-indigo-200 transition duration-150">Solar Portfolio</a>
+                <button id="menu-toggle" class="lg:hidden p-2 rounded-lg hover:bg-indigo-700 focus:outline-none">
+                    <!-- Updated Menu Icon for visibility and modern look -->
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Navigation Links (Hidden by default on mobile) -->
+            <div id="nav-links" class="hidden lg:block lg:flex-1 p-4 lg:overflow-y-auto">
+                <div class="flex flex-col space-y-2">
+                    <a href="#activity-1" class="menu-item p-3 rounded-xl hover:bg-indigo-600 transition duration-150 ease-in-out text-lg font-medium">Activity 1 (5 kW Residential PV)</a>
+                    <a href="#activity-2" class="menu-item p-3 rounded-xl hover:bg-indigo-600 transition duration-150 ease-in-out text-lg font-medium">Activity 2 (Hostel SWH)</a>
+                    <a href="#activity-3" class="menu-item p-3 rounded-xl hover:bg-indigo-600 transition duration-150 ease-in-out text-lg font-medium">Activity 3 (Off-Grid Irrigation)</a>
+                </div>
+                <div class="mt-8 pt-4 border-t border-indigo-600">
+                     <p class="text-sm text-indigo-300">Student Name: Vansh Kumar Jain</p>
+                     <p class="text-sm text-indigo-300">REG NO:RA2311003012258</p>
+                     <p class="text-sm text-indigo-300">Section:Q2</p>
+                     
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 lg:p-10 mt-16 lg:mt-0 lg:ml-64">
+            
+            <header class="mb-10 p-6 bg-white rounded-2xl shadow-lg border-t-4 border-indigo-500">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-2">FT-IV: Solar Energy Design Portfolio</h2>
+                <p class="text-lg text-gray-600">Design Questions Chosen: 1, 2, and 9. Each section provides the system architecture and a detailed technical explanation.</p>
+            </header>
+
+            <!-- Activity 1: 5 kW Residential Rooftop Solar PV System -->
+            <section id="activity-1" class="content-section bg-white p-6 lg:p-8 rounded-2xl shadow-2xl mb-16 border-l-4 border-green-500">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-green-200">Activity 1: 5 kW Residential Rooftop Solar PV System (with Storage & Grid)</h3>
+                
+                <!-- Full-Width Image Placement Area (Horizontal Component) - Using Uploaded Image 1st.jpeg (Hybrid PV) -->
+                <div class="w-full h-auto min-h-[480px] bg-green-50 rounded-xl flex items-center justify-center p-6 border-2 border-dashed border-green-400 mb-10">
+                    <div class="text-center w-full">
+                        <img src="1st.jpeg" alt="5kW PV Diagram" class="w-full h-auto rounded-lg shadow-md mx-auto max-w-4xl" />
+                        <p class="text-sm text-green-700 mt-2">Block Diagram: PV Array, Hybrid Inverter, Battery, Grid Connection, Load Panel</p>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- System Architecture (List) -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            System Architecture (Component List)
+                        </h4>
+                        <p class="text-gray-600 mb-4 italic">The components outlined below form the logical flow of the system:</p>
+                        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-6">
+                            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                                <li><strong>Solar PV Array:</strong> Multiple 400 W PV modules totaling 5 kW peak power, connected in series/parallel to generate DC electricity.</li>
+                                <li><strong>DC Disconnect Switch:</strong> Safety device to isolate the PV array from the system.</li>
+                                <li><strong>Hybrid Inverter:</strong> Core component that manages DC-to-AC conversion, grid synchronization, and battery charge/discharge cycles.</li>
+                                <li><strong>Battery Bank (e.g., 10 kWh Li-ion):</strong> Stores excess energy for use during grid outages or night time.</li>
+                                <li><strong>AC Distribution Box/Load Panel:</strong> Supplies power to the residential AC loads (lights, appliances).</li>
+                                <li><strong>Smart Meter/Net Meter:</strong> Measures electricity drawn from and fed back to the main utility grid.</li>
+                                <li><strong>Utility Grid Connection:</strong> Connection point to the external power network.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Explanation -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 13.707a1 1 0 01-1.414-1.414L10 9.586l2.707 2.707a1 1 0 01-1.414 1.414L10 11.414l-1.293 1.293z" clip-rule="evenodd"></path></svg>
+                            Design Explanation
+                        </h4>
+                        <p class="text-gray-700 leading-relaxed text-justify">
+     The system harnesses <strong>solar irradiance (sunlight)</strong> as its primary energy source. The <strong>conversion process</strong> begins when photovoltaic (PV) modules convert solar photons directly into direct current (DC) electricity through the photovoltaic effect. This DC power is regulated by an advanced hybrid inverter, which prioritizes the immediate energy demands of household loads. Any excess DC energy is stored in the <strong>battery bank</strong>, ensuring power availability after sunset or during grid outages. Once the batteries are fully charged and household needs are met, any remaining surplus power is exported to the <strong>utility grid</strong> via a net-metering mechanism.  
+     <br><br>
+     The primary <strong>output/utilization</strong> of the system is the continuous supply of clean, renewable AC electricity to the home, substantially reducing electricity bills. In real-world applications, this system offers a powerful combination of <strong>energy independence</strong>, financial savings, and enhanced <strong>grid resilience</strong> by providing reliable backup power—making it a sustainable and vital component of modern residential infrastructure.
+</p>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity 2: Solar Water Heating System (2000 L/day University Hostel) -->
+            <section id="activity-2" class="content-section bg-white p-6 lg:p-8 rounded-2xl shadow-2xl mb-16 border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-blue-200">Activity 2: Solar Water Heating System (2000 L/day University Hostel)</h3>
+                
+                <!-- Full-Width Image Placement Area (Horizontal Component) - Using Uploaded Image 2nd.jpeg (SWH) -->
+                <div class="w-full h-auto min-h-[480px] bg-blue-50 rounded-xl flex items-center justify-center p-6 border-2 border-dashed border-blue-400 mb-10">
+                    <div class="text-center w-full">
+                        <img src="2nd.jpeg" alt="SWH Diagram" class="w-full h-auto rounded-lg shadow-md mx-auto max-w-4xl" />
+                        <p class="text-sm text-blue-700 mt-2">Block Diagram: Collectors, Storage Tank, Circulation Pump, Auxiliary Heater</p>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- System Architecture (List) -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            System Architecture (Component List)
+                        </h4>
+                        <p class="text-gray-600 mb-4 italic">The components outlined below form the logical flow of the system:</p>
+                        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-6">
+                            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                                <li><strong>Solar Thermal Collectors (ETC/FPC):</strong> Large array of collectors installed on the rooftop to absorb solar thermal energy.</li>
+                                <li><strong>Insulated Hot Water Storage Tank (2000 L capacity):</strong> Centralized tank to store the heated water and maintain temperature.</li>
+                                <li><strong>Circulation Pump (Optional for Forced Circulation):</strong> Moves the heat transfer fluid/water between the collectors and the tank.</li>
+                                <li><strong>Controller & Sensors:</strong> Monitors temperatures in the collector and tank, controlling the pump operation for optimal heat transfer.</li>
+                                <li><strong>Auxiliary Heater (Electric/Gas):</strong> Backup heater to ensure hot water supply during prolonged cloudy days.</li>
+                                <li><strong>Hostel Hot Water Distribution Network:</strong> Pipes delivering hot water to bathrooms and kitchens.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Explanation -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 13.707a1 1 0 01-1.414-1.414L10 9.586l2.707 2.707a1 1 0 01-1.414 1.414L10 11.414l-1.293 1.293z" clip-rule="evenodd"></path></svg>
+                            Design Explanation
+                        </h4>
+<p class="text-gray-700 leading-relaxed text-justify">
+    This system relies on <strong>solar irradiance (sunlight)</strong> as its primary thermal energy <strong>source</strong>. The <strong>conversion process</strong> takes place within solar thermal collectors, typically <strong>Evacuated Tube Collectors (ETC)</strong> known for their high efficiency. These collectors absorb solar radiation and convert it into heat, which is then transferred to the water circulating through them. The heated water is pumped or naturally circulated via the thermosiphon effect into a large, highly <strong>insulated storage tank</strong> with a capacity of <strong>2000 liters</strong>, meeting the hostel’s daily hot water demand.  
+    <br><br>
+    The primary <strong>output/utilization</strong> of this system is the supply of sanitary hot water (typically between <strong>55&deg;C and 65&deg;C</strong>) for daily use by hostel residents. An auxiliary heater is incorporated to ensure continuous supply during low solar conditions.  
+    <br><br>
+    The real-world relevance of this design lies in its ability to achieve <strong>massive operational cost savings</strong> by displacing the electricity or fuel otherwise required for conventional large-scale water heating. This makes it an essential and highly sustainable solution for institutional buildings.
+</p>
+
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity 3: Solar-Powered Irrigation Pumping System (Off-Grid) -->
+            <section id="activity-3" class="content-section bg-white p-6 lg:p-8 rounded-2xl shadow-2xl mb-16 border-l-4 border-red-500">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-red-200">Activity 3: Solar-Powered Irrigation Pumping System (Off-Grid)</h3>
+                
+                <!-- Full-Width Image Placement Area (Horizontal Component) - Using Uploaded Image 3rd.jpeg (Irrigation) -->
+                <div class="w-full h-auto min-h-[480px] bg-red-50 rounded-xl flex items-center justify-center p-6 border-2 border-dashed border-red-400 mb-10">
+                    <div class="text-center w-full">
+                        <img src="3rd.jpeg" alt="Irrigation Diagram" class="w-full h-auto rounded-lg shadow-md mx-auto max-w-4xl" />
+                        <p class="text-sm text-red-700 mt-2">Block Diagram: PV Array, MPPT Controller, Submersible Pump, Water Source</p>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- System Architecture (List) -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            System Architecture (Component List)
+                        </h4>
+                        <p class="text-gray-600 mb-4 italic">The components outlined below form the logical flow of the system:</p>
+                        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-6">
+                            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                                <li><strong>Solar PV Array (Primary Energy Source):</strong> Converts sunlight to DC electricity for the pump.</li>
+                                <li><strong>Maximum Power Point Tracking (MPPT) Controller/Drive:</strong> Optimizes the power output from the PV array to efficiently match the pump's load.</li>
+                                <li><strong>Submersible/Surface Pump (DC or AC with Inverter):</strong> Lifts water from the source (well, borewell, or river).</li>
+                                <li><strong>Water Source:</strong> Well, borewell, river, or pond.</li>
+                                <li><strong>Storage Tank/Reservoir (Optional but recommended):</strong> Stores pumped water for irrigation use during non-sunny hours.</li>
+                                <li><strong>Drip/Sprinkler Irrigation System:</strong> Distribution network delivering water to the crops.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Explanation -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 13.707a1 1 0 01-1.414-1.414L10 9.586l2.707 2.707a1 1 0 01-1.414 1.414L10 11.414l-1.293 1.293z" clip-rule="evenodd"></path></svg>
+                            Design Explanation
+                        </h4>
+                        <p class="text-gray-700 leading-relaxed text-justify">
+     The irrigation system utilizes <strong>solar irradiance</strong> as its primary energy <strong>source</strong>. The <strong>conversion process</strong> begins at the photovoltaic (PV) array, which directly converts sunlight into direct current (DC) electrical energy. This DC power is regulated by a dedicated pump controller—often equipped with <strong>Maximum Power Point Tracking (MPPT)</strong>—to ensure optimal power transfer. The controller drives a high-efficiency pump, serving as the primary <strong>output/utilization</strong> component, which draws water from the source (such as a borewell) and supplies it either directly to the irrigation system or to an elevated storage tank.  
+     <br><br>
+     This design is particularly valuable for <strong>off-grid agricultural applications</strong>, as it eliminates dependence on costly diesel generators or unreliable utility connections. By providing a sustainable, dependable, and cost-free source of power for water management, the system significantly reduces operating expenses and enhances <strong>food and water security</strong> in remote farming communities.
+</p>
+
+                    </div>
+                </div>
+            </section>
+
+             <!-- Footer Section -->
+             <footer class="mt-12 p-4 text-center text-sm text-gray-500 border-t border-gray-300 rounded-b-2xl bg-white shadow-inner">
+                 Portfolio Designed for FT-IV | Renewable Energy Systems | SRMIST
+             </footer>
+
+        </main>
+    </div>
+
+    <script>
+        // JavaScript for mobile menu toggle and smooth scrolling
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const navLinks = document.getElementById('nav-links');
+            // Toggle visibility for mobile menu
+            navLinks.classList.toggle('hidden');
+            // Adjust sidebar height on mobile when open
+            const sidebar = document.getElementById('sidebar');
+            if (!navLinks.classList.contains('hidden')) {
+                sidebar.classList.add('h-auto');
+            } else {
+                sidebar.classList.remove('h-auto');
+            }
+        });
+
+        // Hide mobile menu after clicking a link
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Check if the screen is small (Tailwind's 'lg' breakpoint is 1024px)
+                if (window.innerWidth < 1024) {
+                    document.getElementById('nav-links').classList.add('hidden');
+                    document.getElementById('sidebar').classList.remove('h-auto');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
