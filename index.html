@@ -7,36 +7,111 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJzL5g7Qj3T2M6g3A3Wq0tJc12c5F4N1gQ+Q4w2Bf8tY8yF8k5d5A5eB3G3V2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
-        /* Custom styles for the Inter font and smooth scrolling */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Dark background for a modern/tech look */
+            background-color: #0d1117;
         }
-        /* Custom scrollbar for aesthetics */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #161b22;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4f46e5;
-            border-radius: 5px;
-        }
-        /* Correction for scroll to anchors below fixed header */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #161b22; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 5px; }
+        
         .content-section {
             padding-top: 5rem;
             margin-top: -5rem;
         }
-        /* Style for the big titles */
         .big-title {
-            font-size: clamp(2rem, 5vw + 1rem, 4rem);
+            font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
             line-height: 1;
+        }
+        
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse-slow { animation: pulse 3s infinite; }
+        @keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: rotate360 30s linear infinite; }
+        .animate-spin-slower { animation: rotate360 60s linear infinite; }
+
+        /* FIXED HERO VIDEO BACKGROUND STYLES */
+        .hero-container {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.35) contrast(1.1);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(17, 24, 39, 0.3), rgba(0, 0, 0, 0), rgba(17, 24, 39, 0.5));
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
         }
     </style>
 </head>
 <body class="min-h-screen text-gray-200">
+
+    <div class="fixed top-20 left-10 z-0 text-yellow-500 opacity-10 hidden lg:block"><span class="text-9xl animate-spin-slow inline-block">☀️</span></div>
+    <div class="fixed top-1/3 left-5 z-0 text-green-500 opacity-5 hidden lg:block">
+        <svg class="w-32 h-32 transform rotate-12 animate-pulse-slow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 2h10c.55 0 1 .45 1 1v18c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1zm3 18h4v-2h-4v2zm0-4h4V6h-4v10z"/>
+        </svg>
+    </div>
+    <div class="fixed bottom-10 right-10 z-0 text-yellow-500 opacity-8 hidden lg:block"><span class="text-7xl animate-spin-slower inline-block">☀️</span></div>
+    <div class="fixed bottom-1/4 right-5 z-0 text-green-500 opacity-6 hidden lg:block">
+        <svg class="w-28 h-28 transform -rotate-45 animate-pulse-slow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 2h10c.55 0 1 .45 1 1v18c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1zm3 18h4v-2h-4v2zm0-4h4V6h-4v10z"/>
+        </svg>
+    </div>
+    <div class="fixed top-1/2 -left-8 transform -translate-y-1/2 z-0 text-blue-400 opacity-7 hidden lg:block">
+        <svg class="w-36 h-36 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 18v-4.2c1.47-1.12 2.5-2.67 2.91-4.38L13 8.35V6h-2v2.35l-2.91 1.47c.41 1.71 1.44 3.26 2.91 4.38V18H7v2h10v-2zM12 4c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1s-1 .45-1 1v2c0 .55.45 1 1 1z"/>
+        </svg>
+    </div>
+    <div class="fixed top-1/4 -right-8 transform -translate-y-1/2 z-0 text-blue-400 opacity-5 hidden lg:block">
+        <svg class="w-24 h-24 animate-spin-slower" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 18v-4.2c1.47-1.12 2.5-2.67 2.91-4.38L13 8.35V6h-2v2.35l-2.91 1.47c.41 1.71 1.44 3.26 2.91 4.38V18H7v2h10v-2zM12 4c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1s-1 .45-1 1v2c0 .55.45 1 1 1z"/>
+        </svg>
+    </div>
 
     <nav id="header-nav" class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm shadow-2xl z-20 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,77 +119,108 @@
                 <a href="#top" class="flex-shrink-0 text-3xl font-extrabold tracking-tighter text-indigo-400 hover:text-indigo-300 transition duration-300">
                     <span class="text-green-400">Solar</span> Portfolio
                 </a>
-
-                <div class="hidden lg:ml-6 lg:flex lg:space-x-4">
-                    <a href="#activity-1" class="text-lg px-3 py-2 rounded-lg font-medium text-gray-300 hover:bg-indigo-700 hover:text-white transition duration-300">Residential PV</a>
-                    <a href="#activity-2" class="text-lg px-3 py-2 rounded-lg font-medium text-gray-300 hover:bg-indigo-700 hover:text-white transition duration-300">Hostel SWH</a>
-                    <a href="#activity-3" class="text-lg px-3 py-2 rounded-lg font-medium text-gray-300 hover:bg-indigo-700 hover:text-white transition duration-300">Off-Grid Irrigation</a>
-                </div>
-
-                <button id="menu-toggle" class="lg:hidden p-2 rounded-lg text-indigo-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800">
-                <a href="#activity-1" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-indigo-600 transition duration-300">Activity 1 (Residential PV)</a>
-                <a href="#activity-2" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-indigo-600 transition duration-300">Activity 2 (Hostel SWH)</a>
-                <a href="#activity-3" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-indigo-600 transition duration-300">Activity 3 (Off-Grid Irrigation)</a>
-                <div class="pt-4 border-t border-gray-700 text-sm px-3 text-indigo-300">
-                    <p>Vansh Kumar Jain | RA2311003012258 | Section: Q2</p>
-                </div>
             </div>
         </div>
     </nav>
     
-    <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <main class="relative z-10">
         
-        <header class="mb-20 text-center" data-aos="fade-up" data-aos-duration="1000">
-            <p class="text-xl font-medium text-green-400 mb-4">FT-IV Design Submission</p>
-            <h1 class="big-title font-extrabold text-white mb-4 leading-none tracking-tight">
-                <span class="block text-indigo-400">Solar</span> Energy Design Portfolio
-            </h1>
-            <p class="text-2xl text-gray-400 max-w-3xl mx-auto">
-                Comprehensive technical designs for three distinct solar energy applications.
-            </p>
+        <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+        <header id="top" class="hero-container" data-aos="fade-up" data-aos-duration="1000">
+            
+            <!-- Video Background -->
+            <div class="hero-video-wrapper">
+                <video id="heroVideo" class="hero-video" autoplay loop muted playsinline preload="auto">
+                    <source src="solar_video.mp4" type="video/mp4">
+                    <source src="solar_video.webm" type="video/webm">
+                </video>
+            </div>
+            
+            <!-- Gradient Overlay -->
+            <div class="hero-overlay"></div>
+            
+            <!-- Content -->
+            <div class="hero-content">
+                <p class="text-xl font-medium text-green-400 mb-4">FT-IV Design Submission</p>
+                <h1 class="big-title font-extrabold text-white mb-6 leading-none tracking-tight">
+                    <span class="block text-indigo-400">Solar</span> Energy Design Portfolio
+                </h1>
+                <p class="text-2xl text-gray-200 max-w-3xl mx-auto mb-10">
+                    Comprehensive technical designs for three distinct solar energy applications.
+                </p>
+                <a href="#assignment-selector" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                    View Assignments &darr;
+                </a>
+            </div>
         </header>
 
-        <div class="space-y-20">
+        <section id="assignment-selector" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+            <h2 class="text-4xl font-bold text-white text-center mb-10" data-aos="fade-up">Select an Assignment</h2>
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <div id="card-1" class="assignment-card p-6 bg-gray-800 rounded-xl shadow-xl border-t-4 border-green-500 cursor-pointer hover:bg-gray-700/50 transition duration-300" data-target="activity-1-detail" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-green-500 text-5xl mb-3">⚡</div>
+                    <h3 class="text-xl font-bold text-white mb-2">1. Residential Hybrid PV</h3>
+                    <p class="text-gray-400 text-sm">Design of a 5 kW Rooftop Solar PV System with battery storage.</p>
+                </div>
 
-            <section id="activity-1" class="content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-indigo-500/30 border-t-4 border-green-500" data-aos="fade-right" data-aos-delay="100">
+                <div id="card-2" class="assignment-card p-6 bg-gray-800 rounded-xl shadow-xl border-t-4 border-blue-500 cursor-pointer hover:bg-gray-700/50 transition duration-300" data-target="activity-2-detail" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-500 text-5xl mb-3">🔥</div>
+                    <h3 class="text-xl font-bold text-white mb-2">2. Hostel SWH System</h3>
+                    <p class="text-gray-400 text-sm">Design of a 2000 L/day Solar Water Heating system for institutional use.</p>
+                </div>
+
+                <div id="card-3" class="assignment-card p-6 bg-gray-800 rounded-xl shadow-xl border-t-4 border-red-500 cursor-pointer hover:bg-gray-700/50 transition duration-300" data-target="activity-3-detail" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-red-500 text-5xl mb-3">💧</div>
+                    <h3 class="text-xl font-bold text-white mb-2">3. Off-Grid Irrigation</h3>
+                    <p class="text-gray-400 text-sm">Design of a solar-powered pumping system for agricultural irrigation.</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="detail-content-area" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div id="placeholder" class="text-center p-20 bg-gray-800 rounded-xl border-dashed border-2 border-gray-700" data-aos="zoom-in">
+                <p class="text-2xl text-indigo-400 font-semibold mb-4">Click an Assignment Card Above to Load Details</p>
+                <p class="text-gray-500">The full system architecture, diagrams, and technical explanation will appear here.</p>
+            </div>
+
+            <section id="activity-1-detail" class="detail-section hidden content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl border-t-4 border-green-500">
                 <h3 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
                     <span class="text-green-500 mr-3">#1</span> ⚡ 5 kW Residential Hybrid PV System
                 </h3>
                 
-                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="1st.jpeg" alt="5kW Hybrid PV System Block Diagram" class="w-full h-auto rounded-lg shadow-xl transition duration-500 hover:scale-[1.01] max-w-5xl mb-4" />
+                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10">
+                    <img src="1st.jpeg" alt="5kW Hybrid PV System Block Diagram" class="w-full h-auto rounded-lg shadow-xl max-w-5xl mb-4" />
                     <p class="text-sm text-gray-500 mt-2">Diagram: PV Array, Hybrid Inverter, Battery, Grid Connection, Load Panel</p>
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-10">
-                    <div data-aos="fade-up" data-aos-delay="300">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-list-ul mr-2"></i> Key Architecture
                         </h4>
-                        <div class="p-6 bg-gray-700/50 rounded-xl space-y-3">
-                            <ol class="list-decimal list-inside space-y-3 pl-4 text-gray-300">
-                                <li><strong>Solar PV Array:</strong> Multiple 400 W PV modules totaling 5 kW peak power, connected in series/parallel to generate DC electricity.</li>
-                                <li><strong>DC Disconnect Switch:</strong> Safety device to isolate the PV array from the system.</li>
-                                <li><strong>Hybrid Inverter:</strong> Core component that manages DC-to-AC conversion, grid synchronization, and battery charge/discharge cycles.</li>
-                                <li><strong>Battery Bank (e.g., 10 kWh Li-ion):</strong> Stores excess energy for use during grid outages or night time.</li>
-                                <li><strong>AC Distribution Box/Load Panel:</strong> Supplies power to the residential AC loads (lights, appliances).</li>
-                                <li><strong>Smart Meter/Net Meter:</strong> Measures electricity drawn from and fed back to the main utility grid.</li>
-                                <li><strong>Utility Grid Connection:</strong> Connection point to the external power network.</li>
-                            </ol>
+                        <div class="p-6 bg-gray-700/50 rounded-xl space-y-4">
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">1.</span><p class="text-gray-300"><strong>Solar PV Array:</strong> Multiple 400 W PV modules totaling 5 kW peak power, connected in series/parallel to generate DC electricity.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">2.</span><p class="text-gray-300"><strong>DC Disconnect Switch:</strong> Safety device to isolate the PV array from the system.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">3.</span><p class="text-gray-300"><strong>Hybrid Inverter:</strong> Core component that manages DC-to-AC conversion, grid synchronization, and battery charge/discharge cycles.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">4.</span><p class="text-gray-300"><strong>Battery Bank (e.g., 10 kWh Li-ion):</strong> Stores excess energy for use during grid outages or night time.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">5.</span><p class="text-gray-300"><strong>AC Distribution Box/Load Panel:</strong> Supplies power to the residential AC loads (lights, appliances).</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">6.</span><p class="text-gray-300"><strong>Smart Meter/Net Meter:</strong> Measures electricity drawn from and fed back to the main utility grid.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-green-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-green-400">7.</span><p class="text-gray-300"><strong>Utility Grid Connection:</strong> Connection point to the external power network.</p></div>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="400">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-lightbulb-on mr-2"></i> Technical Explanation
                         </h4>
+                        
+                        <div class="mb-6 bg-gray-900 rounded-lg overflow-hidden border border-green-500/20">
+                            <img src="1st_image.png" alt="Residential Solar PV Installation" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                            <p class="text-xs text-gray-500 p-2 text-center">Real-world residential solar installation</p>
+                        </div>
+                        
                         <p class="text-gray-400 leading-relaxed text-justify">
                             The system harnesses <strong>solar irradiance (sunlight)</strong> as its primary energy source. The <strong>conversion process</strong> begins when photovoltaic (PV) modules convert solar photons directly into direct current (DC) electricity through the photovoltaic effect. This DC power is regulated by an advanced hybrid inverter, which prioritizes the immediate energy demands of household loads. Any excess DC energy is stored in the <strong>battery bank</strong>, ensuring power availability after sunset or during grid outages. Once the batteries are fully charged and household needs are met, any remaining surplus power is exported to the <strong>utility grid</strong> via a net-metering mechanism. 
                             <br><br>
@@ -124,41 +230,43 @@
                 </div>
             </section>
             
-            <div class="border-t border-gray-700 w-1/3 mx-auto" data-aos="fade-up"></div>
-
-            <section id="activity-2" class="content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-indigo-500/30 border-t-4 border-blue-500" data-aos="fade-left" data-aos-delay="100">
+            <section id="activity-2-detail" class="detail-section hidden content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl border-t-4 border-blue-500">
                 <h3 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
                     <span class="text-blue-500 mr-3">#2</span> 🔥 2000 L/day Hostel SWH System
                 </h3>
                 
-                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="2nd.jpeg" alt="SWH System Block Diagram" class="w-full h-auto rounded-lg shadow-xl transition duration-500 hover:scale-[1.01] max-w-5xl mb-4" />
+                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10">
+                    <img src="2nd.jpeg" alt="SWH System Block Diagram" class="w-full h-auto rounded-lg shadow-xl max-w-5xl mb-4" />
                     <p class="text-sm text-gray-500 mt-2">Diagram: Collectors, Storage Tank, Circulation Pump, Auxiliary Heater</p>
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-10">
-                    <div data-aos="fade-up" data-aos-delay="300">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-list-ul mr-2"></i> Key Architecture
                         </h4>
-                         <div class="p-6 bg-gray-700/50 rounded-xl space-y-3">
-                            <ol class="list-decimal list-inside space-y-3 pl-4 text-gray-300">
-                                <li><strong>Solar Thermal Collectors (ETC/FPC):</strong> Large array of collectors installed on the rooftop to absorb solar thermal energy.</li>
-                                <li><strong>Insulated Hot Water Storage Tank (2000 L capacity):</strong> Centralized tank to store the heated water and maintain temperature.</li>
-                                <li><strong>Circulation Pump (Optional for Forced Circulation):</strong> Moves the heat transfer fluid/water between the collectors and the tank.</li>
-                                <li><strong>Controller & Sensors:</strong> Monitors temperatures in the collector and tank, controlling the pump operation for optimal heat transfer.</li>
-                                <li><strong>Auxiliary Heater (Electric/Gas):</strong> Backup heater to ensure hot water supply during prolonged cloudy days.</li>
-                                <li><strong>Hostel Hot Water Distribution Network:</strong> Pipes delivering hot water to bathrooms and kitchens.</li>
-                            </ol>
+                        <div class="p-6 bg-gray-700/50 rounded-xl space-y-4">
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">1.</span><p class="text-gray-300"><strong>Solar Thermal Collectors (ETC/FPC):</strong> Large array of collectors installed on the rooftop to absorb solar thermal energy.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">2.</span><p class="text-gray-300"><strong>Insulated Hot Water Storage Tank (2000 L capacity):</strong> Centralized tank to store the heated water and maintain temperature.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">3.</span><p class="text-gray-300"><strong>Circulation Pump (Optional for Forced Circulation):</strong> Moves the heat transfer fluid/water between the collectors and the tank.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">4.</span><p class="text-gray-300"><strong>Controller & Sensors:</strong> Monitors temperatures in the collector and tank, controlling the pump operation for optimal heat transfer.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">5.</span><p class="text-gray-300"><strong>Auxiliary Heater (Electric/Gas):</strong> Backup heater to ensure hot water supply during prolonged cloudy days.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-blue-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-blue-400">6.</span><p class="text-gray-300"><strong>Hostel Hot Water Distribution Network:</strong> Pipes delivering hot water to bathrooms and kitchens.</p></div>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="400">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-lightbulb-on mr-2"></i> Technical Explanation
                         </h4>
+                        
+                        <div class="mb-6 bg-gray-900 rounded-lg overflow-hidden border border-blue-500/20">
+                            <img src="2nd_image.png" alt="Solar Water Heating Installation" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                            <p class="text-xs text-gray-500 p-2 text-center">Institutional solar water heating system</p>
+                        </div>
+                        
                         <p class="text-gray-400 leading-relaxed text-justify">
-                            This system relies on <strong>solar irradiance (sunlight)</strong> as its primary thermal energy <strong>source</strong>. The <strong>conversion process</strong> takes place within solar thermal collectors, typically <strong>Evacuated Tube Collectors (ETC)</strong> known for their high efficiency. These collectors absorb solar radiation and convert it into heat, which is then transferred to the water circulating through them. The heated water is pumped or naturally circulated via the thermosiphon effect into a large, highly <strong>insulated storage tank</strong> with a capacity of <strong>2000 liters</strong>, meeting the hostel’s daily hot water demand. 
+                            This system relies on <strong>solar irradiance (sunlight)</strong> as its primary thermal energy <strong>source</strong>. The <strong>conversion process</strong> takes place within solar thermal collectors, typically <strong>Evacuated Tube Collectors (ETC)</strong> known for their high efficiency. These collectors absorb solar radiation and convert it into heat, which is then transferred to the water circulating through them. The heated water is pumped or naturally circulated via the thermosiphon effect into a large, highly <strong>insulated storage tank</strong> with a capacity of <strong>2000 liters</strong>, meeting the hostel's daily hot water demand. 
                             <br><br>
                             The primary <strong>output/utilization</strong> of this system is the supply of sanitary hot water (typically between <strong>$55^\circ \text{C}$ and $65^\circ \text{C}$</strong>) for daily use by hostel residents. An auxiliary heater is incorporated to ensure continuous supply during low solar conditions. 
                             <br><br>
@@ -168,39 +276,41 @@
                 </div>
             </section>
 
-            <div class="border-t border-gray-700 w-1/3 mx-auto" data-aos="fade-up"></div>
-
-            <section id="activity-3" class="content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl transition-all duration-500 hover:shadow-indigo-500/30 border-t-4 border-red-500" data-aos="fade-right" data-aos-delay="100">
+            <section id="activity-3-detail" class="detail-section hidden content-section p-8 lg:p-12 bg-gray-800 rounded-3xl shadow-2xl border-t-4 border-red-500">
                 <h3 class="text-3xl lg:text-4xl font-bold text-white mb-8 flex items-center">
                     <span class="text-red-500 mr-3">#3</span> 💧 Off-Grid Irrigation Pumping
                 </h3>
                 
-                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="3rd.jpeg" alt="Solar Irrigation Pump Block Diagram" class="w-full h-auto rounded-lg shadow-xl transition duration-500 hover:scale-[1.01] max-w-5xl mb-4" />
+                <div class="w-full bg-gray-900 rounded-xl flex flex-col items-center justify-center p-6 border border-gray-700 mb-10">
+                    <img src="3rd.jpeg" alt="Solar Irrigation Pump Block Diagram" class="w-full h-auto rounded-lg shadow-xl max-w-5xl mb-4" />
                     <p class="text-sm text-gray-500 mt-2">Diagram: PV Array, MPPT Controller, Submersible Pump, Water Source</p>
                 </div>
                 
                 <div class="grid lg:grid-cols-2 gap-10">
-                    <div data-aos="fade-up" data-aos-delay="300">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-list-ul mr-2"></i> Key Architecture
                         </h4>
-                         <div class="p-6 bg-gray-700/50 rounded-xl space-y-3">
-                            <ol class="list-decimal list-inside space-y-3 pl-4 text-gray-300">
-                                <li><strong>Solar PV Array (Primary Energy Source):</strong> Converts sunlight to DC electricity for the pump.</li>
-                                <li><strong>Maximum Power Point Tracking (MPPT) Controller/Drive:</strong> Optimizes the power output from the PV array to efficiently match the pump's load.</li>
-                                <li><strong>Submersible/Surface Pump (DC or AC with Inverter):</strong> Lifts water from the source (well, borewell, or river).</li>
-                                <li><strong>Water Source:</strong> Well, borewell, river, or pond.</li>
-                                <li><strong>Storage Tank/Reservoir (Optional but recommended):</strong> Stores pumped water for irrigation use during non-sunny hours.</li>
-                                <li><strong>Drip/Sprinkler Irrigation System:</strong> Distribution network delivering water to the crops.</li>
-                            </ol>
+                        <div class="p-6 bg-gray-700/50 rounded-xl space-y-4">
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">1.</span><p class="text-gray-300"><strong>Solar PV Array (Primary Energy Source):</strong> Converts sunlight to DC electricity for the pump.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">2.</span><p class="text-gray-300"><strong>Maximum Power Point Tracking (MPPT) Controller/Drive:</strong> Optimizes the power output from the PV array to efficiently match the pump's load.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">3.</span><p class="text-gray-300"><strong>Submersible/Surface Pump (DC or AC with Inverter):</strong> Lifts water from the source (well, borewell, or river).</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">4.</span><p class="text-gray-300"><strong>Water Source:</strong> Well, borewell, river, or pond.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">5.</span><p class="text-gray-300"><strong>Storage Tank/Reservoir (Optional but recommended):</strong> Stores pumped water for irrigation use during non-sunny hours.</p></div>
+                            <div class="p-4 bg-gray-800 rounded-lg border border-red-500/30 flex shadow-md"><span class="flex-shrink-0 text-xl font-bold mr-3 text-red-400">6.</span><p class="text-gray-300"><strong>Drip/Sprinkler Irrigation System:</strong> Distribution network delivering water to the crops.</p></div>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="400">
+                    <div>
                         <h4 class="text-2xl font-semibold text-indigo-400 mb-4 border-b border-gray-700 pb-2">
                             <i class="fas fa-lightbulb-on mr-2"></i> Technical Explanation
                         </h4>
+                        
+                        <div class="mb-6 bg-gray-900 rounded-lg overflow-hidden border border-red-500/20">
+                            <img src="3rd_image.png" alt="Solar Irrigation Pump System" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                            <p class="text-xs text-gray-500 p-2 text-center">Agricultural solar pumping installation</p>
+                        </div>
+                        
                         <p class="text-gray-400 leading-relaxed text-justify">
                             The irrigation system utilizes <strong>solar irradiance</strong> as its primary energy <strong>source</strong>. The <strong>conversion process</strong> begins at the photovoltaic (PV) array, which directly converts sunlight into direct current (DC) electrical energy. This DC power is regulated by a dedicated pump controller—often equipped with <strong>Maximum Power Point Tracking (MPPT)</strong>—to ensure optimal power transfer. The controller drives a high-efficiency pump, serving as the primary <strong>output/utilization</strong> component, which draws water from the source (such as a borewell) and supplies it either directly to the irrigation system or to an elevated storage tank. 
                             <br><br>
@@ -209,9 +319,10 @@
                     </div>
                 </div>
             </section>
+
         </div>
 
-        <footer class="mt-20 p-8 text-center bg-gray-900 rounded-xl shadow-inner border-t-2 border-indigo-600" data-aos="fade-up">
+        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 p-8 text-center bg-gray-900 rounded-xl shadow-inner border-t-2 border-indigo-600" data-aos="fade-up">
             <h4 class="text-xl font-semibold text-white mb-2">Student Submission Details</h4>
             <div class="text-sm text-gray-400 space-y-1">
                 <p><span class="font-medium text-indigo-400">Student Name:</span> Vansh Kumar Jain</p>
@@ -223,29 +334,72 @@
 
     </main>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Initialize AOS animations
         AOS.init({
-            once: true, // Only animate once
-            duration: 800, // Animation duration
-            easing: 'ease-out-back', // Animation curve
+            once: true,
+            duration: 800,
+            easing: 'ease-out-back',
         });
 
-        // JavaScript for mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+        // Force video to play continuously
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('heroVideo');
+            
+            if (video) {
+                // Ensure video plays
+                video.play().catch(e => {
+                    console.log('Video autoplay prevented:', e);
+                });
+                
+                // Force replay on end (backup for loop attribute)
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0;
+                    video.play();
+                });
+                
+                // Ensure video stays visible
+                video.addEventListener('loadeddata', () => {
+                    video.style.opacity = '1';
+                });
+            }
 
-        // Hide mobile menu after clicking a link
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Check if the screen is small (Tailwind's 'lg' breakpoint is 1024px)
-                if (window.innerWidth < 1024) {
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
+            // Assignment card click handlers
+            const cards = document.querySelectorAll('.assignment-card');
+            const detailSections = document.querySelectorAll('.detail-section');
+            const placeholder = document.getElementById('placeholder');
+            const detailContentArea = document.getElementById('detail-content-area');
+
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+
+                    // Hide all detail sections and placeholder
+                    detailSections.forEach(section => {
+                        section.classList.add('hidden');
+                    });
+                    placeholder.classList.add('hidden');
+
+                    // Remove active state from all cards
+                    cards.forEach(c => {
+                        c.classList.remove('bg-gray-700', 'shadow-2xl', 'scale-[1.02]');
+                        c.classList.add('bg-gray-800', 'shadow-xl');
+                    });
+
+                    // Show target detail section
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                        
+                        // Set clicked card as active
+                        this.classList.add('bg-gray-700', 'shadow-2xl', 'scale-[1.02]');
+                        this.classList.remove('bg-gray-800', 'shadow-xl');
+
+                        // Smooth scroll to detail area
+                        detailContentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
             });
         });
     </script>
